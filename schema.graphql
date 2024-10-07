@@ -1,0 +1,194 @@
+type BalanceSync @entity(immutable: true) {
+  id: Bytes!
+
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type BaseDebtRepaid @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  realBaseDebtDelta: BigInt! # uint256
+  discountedBaseDebtDelta: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ClosePosition @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  token: Bytes! # address
+  collateralDelta: BigInt! # uint256
+  swapPriceX96: BigInt! # uint256
+  collateralDiscountedDelta: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Deleverage @entity(immutable: true) {
+  id: Bytes!
+  positionType: Int! # uint8
+  totalCollateralReduced: BigInt! # uint256
+  totalDebtReduced: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DepositBase @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  amount: BigInt! # uint256
+  newPositionType: Int! # uint8
+  baseDiscountedAmount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type DepositQuote @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  amount: BigInt! # uint256
+  newPositionType: Int! # uint8
+  quoteDiscountedAmount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Emergency @entity(immutable: true) {
+  id: Bytes!
+  mode: Int! # uint8
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type EmergencyWithdraw @entity(immutable: true) {
+  id: Bytes!
+  who: Bytes! # address
+  token: Bytes! # address
+  amount: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type EnactMarginCall @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  swapPriceX96: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Long @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  amount: BigInt! # uint256
+  swapPriceX96: BigInt! # uint256
+  quoteDiscountedDelta: BigInt! # uint256
+  baseDiscountedDelta: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ParametersChanged @entity(immutable: true) {
+  id: Bytes!
+
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type QuoteDebtRepaid @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  realQuoteDebtDelta: BigInt! # uint256
+  discountedQuoteDebtDelta: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type ReceivePosition @entity(immutable: true) {
+  id: Bytes!
+  liquidator: Bytes! # address
+  position: Bytes! # address
+  newPositionType: Int! # uint8
+  newPositionQuoteDiscounted: BigInt! # uint256
+  newPositionBaseDiscounted: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Reinit @entity(immutable: true) {
+  id: Bytes!
+  reinitTimestamp: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SellBaseForQuote @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  baseDelta: BigInt! # uint256
+  quoteDelta: BigInt! # uint256
+  discountedBaseCollateralDelta: BigInt! # uint256
+  discountedQuoteCollateralDelta: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SellQuoteForBase @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  quoteDelta: BigInt! # uint256
+  baseDelta: BigInt! # uint256
+  discountedQuoteCollateralDelta: BigInt! # uint256
+  discountedBaseCollateralDelta: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type Short @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  amount: BigInt! # uint256
+  swapPriceX96: BigInt! # uint256
+  quoteDiscountedDelta: BigInt! # uint256
+  baseDiscountedDelta: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type WithdrawBase @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  amount: BigInt! # uint256
+  baseDiscountedDelta: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type WithdrawQuote @entity(immutable: true) {
+  id: Bytes!
+  user: Bytes! # address
+  amount: BigInt! # uint256
+  quoteDiscountedDelta: BigInt! # uint256
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

@@ -1,0 +1,80 @@
+specVersion: 1.0.0
+indexerHints:
+  prune: auto
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: MarginlyPool
+    network: mainnet
+    source:
+      address: "0xafcC4F047a1012c4b51B69c7C1bB39C5F38F0305"
+      abi: MarginlyPool
+      startBlock: 20613793
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BalanceSync
+        - BaseDebtRepaid
+        - ClosePosition
+        - Deleverage
+        - DepositBase
+        - DepositQuote
+        - Emergency
+        - EmergencyWithdraw
+        - EnactMarginCall
+        - Long
+        - ParametersChanged
+        - QuoteDebtRepaid
+        - ReceivePosition
+        - Reinit
+        - SellBaseForQuote
+        - SellQuoteForBase
+        - Short
+        - WithdrawBase
+        - WithdrawQuote
+      abis:
+        - name: MarginlyPool
+          file: ./abis/MarginlyPool.json
+      eventHandlers:
+        - event: BalanceSync()
+          handler: handleBalanceSync
+        - event: BaseDebtRepaid(indexed address,uint256,uint256)
+          handler: handleBaseDebtRepaid
+        - event: ClosePosition(indexed address,indexed address,uint256,uint256,uint256)
+          handler: handleClosePosition
+        - event: Deleverage(uint8,uint256,uint256)
+          handler: handleDeleverage
+        - event: DepositBase(indexed address,uint256,uint8,uint256)
+          handler: handleDepositBase
+        - event: DepositQuote(indexed address,uint256,uint8,uint256)
+          handler: handleDepositQuote
+        - event: Emergency(uint8)
+          handler: handleEmergency
+        - event: EmergencyWithdraw(indexed address,indexed address,uint256)
+          handler: handleEmergencyWithdraw
+        - event: EnactMarginCall(indexed address,uint256)
+          handler: handleEnactMarginCall
+        - event: Long(indexed address,uint256,uint256,uint256,uint256)
+          handler: handleLong
+        - event: ParametersChanged()
+          handler: handleParametersChanged
+        - event: QuoteDebtRepaid(indexed address,uint256,uint256)
+          handler: handleQuoteDebtRepaid
+        - event: ReceivePosition(indexed address,indexed address,uint8,uint256,uint256)
+          handler: handleReceivePosition
+        - event: Reinit(uint256)
+          handler: handleReinit
+        - event: SellBaseForQuote(indexed address,uint256,uint256,uint256,uint256)
+          handler: handleSellBaseForQuote
+        - event: SellQuoteForBase(indexed address,uint256,uint256,uint256,uint256)
+          handler: handleSellQuoteForBase
+        - event: Short(indexed address,uint256,uint256,uint256,uint256)
+          handler: handleShort
+        - event: WithdrawBase(indexed address,uint256,uint256)
+          handler: handleWithdrawBase
+        - event: WithdrawQuote(indexed address,uint256,uint256)
+          handler: handleWithdrawQuote
+      file: ./src/marginly-pool.ts

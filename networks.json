@@ -1,0 +1,8 @@
+{
+  "mainnet": {
+    "MarginlyPool": {
+      "address": "0xafcC4F047a1012c4b51B69c7C1bB39C5F38F0305",
+      "startBlock": 20613793
+    }
+  }
+}
