@@ -192,3 +192,102 @@ type WithdrawQuote @entity(immutable: true) {
   blockTimestamp: BigInt!
   transactionHash: Bytes!
 }
+
+type Token @entity(immutable: true) {
+  id: ID! # token address
+  symbol: String!
+  name: String!
+  decimals: BigInt!
+}
+
+type Pool @entity {
+  id: Bytes! # pool address
+  createdAtTimestamp: BigInt!
+  createdAtBlockNumber: BigInt!
+
+  baseToken: Token!
+  quoteToken: Token!
+
+  discountedBaseCollateral: BigInt!
+  discountedBaseDebt: BigInt!
+  discountedQuoteCollateral: BigInt!
+  discountedQuoteDebt: BigInt!
+
+  baseCollateralCoeff: BigInt!
+  baseDebtCoeff: BigInt!
+  quoteCollateralCoeff: BigInt!
+  quoteDebtCoeff: BigInt!
+  baseDelevCoeff: BigInt!
+  quoteDelevCoeff: BigInt!
+
+  shortLeverage: BigInt!
+  longLeverage: BigInt!
+
+  maxLeverage: Int!
+  interestRate: Int!
+  fee: Int!
+  swapFee: Int!
+  mcSlippage: Int!
+  positionMinAmount: BigInt!
+  quoteLimit: BigInt!
+}
+
+enum PositionType {
+  UNINITIALIZED
+  LEND
+  SHORT
+  LONG
+}
+
+type UserPosition @entity {
+  id: Bytes! # poolAddress + user address
+  pool: Bytes! # pool address
+  user: Bytes! # user address
+  positionType: PositionType!
+  discountedBaseAmount: BigInt!
+  discountedQuoteAmount: BigInt!
+
+  baseToken: Token!
+  quoteToken: Token!
+
+  baseAmount: BigInt! #realBaseAmount on the event block
+  quoteAmount: BigInt! #realBaseAmount on the event block
+}
+
+type OwnershipTransferStarted @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type OwnershipTransferred @entity(immutable: true) {
+  id: Bytes!
+  previousOwner: Bytes! # address
+  newOwner: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type PoolCreated @entity(immutable: true) {
+  id: Bytes!
+  quoteToken: Bytes! # address
+  baseToken: Bytes! # address
+  priceOracle: Bytes! # address
+  defaultSwapCallData: BigInt! # uint32
+  pool: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}
+
+type SwapRouterChanged @entity(immutable: true) {
+  id: Bytes!
+  newSwapRouter: Bytes! # address
+  blockNumber: BigInt!
+  blockTimestamp: BigInt!
+  transactionHash: Bytes!
+}

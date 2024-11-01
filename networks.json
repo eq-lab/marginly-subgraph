@@ -1,8 +1,42 @@
 {
   "mainnet": {
-    "MarginlyPool": {
-      "address": "0xafcC4F047a1012c4b51B69c7C1bB39C5F38F0305",
-      "startBlock": 20613793
+    "MarginlyFactoryPendle": {
+      "address": "0xF8D88A292B0afa85E5Cf0d1195d0D3728Cfd7070",
+      "startBlock": 19824726
+    },
+    "MarginlyFactory": {
+      "address": "0xc1aC50D46783387F4236a8364435b5CCEaDd9fe2",
+      "startBlock": 20725907
+    }
+  },
+  "linea": {
+    "MarginlyFactoryPendle": {
+      "address": "0x0000000000000000000000000000000000000000",
+      "startBlock": 19824726
+    },
+    "MarginlyFactory": {
+      "address": "0xF97305253804e7A7796f79aB4f8c8908492A8402",
+      "startBlock": 9312068
+    }
+  },
+  "arbitrum-one": {
+    "MarginlyFactoryPendle": {
+      "address": "0x537A3417Fe03e28F4E9640Bece70887a6938ff92",
+      "startBlock": 208756175
+    },
+    "MarginlyFactory": {
+      "address": "0x4a805A6dbaCF824D5A39b9f3559aeFb831C1df95",
+      "startBlock": 220673210
+    }
+  },
+  "blast-mainnet": {
+    "MarginlyFactoryPendle": {
+      "address": "0x0000000000000000000000000000000000000000",
+      "startBlock": 501400
+    },
+    "MarginlyFactory": {
+      "address": "0x1768Faee0A63927FeB81100046f5D63BfE0f08dB",
+      "startBlock": 501400
     }
   }
 }

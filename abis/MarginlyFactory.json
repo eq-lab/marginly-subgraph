@@ -1,0 +1,232 @@
+[
+  {
+    "inputs": [
+      {
+        "internalType": "address",
+        "name": "_marginlyPoolImplementation",
+        "type": "address"
+      },
+      { "internalType": "address", "name": "_swapRouter", "type": "address" },
+      { "internalType": "address", "name": "_feeHolder", "type": "address" },
+      { "internalType": "address", "name": "_WETH9", "type": "address" },
+      {
+        "internalType": "address",
+        "name": "_techPositionOwner",
+        "type": "address"
+      }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "constructor"
+  },
+  { "inputs": [], "name": "Forbidden", "type": "error" },
+  { "inputs": [], "name": "WrongValue", "type": "error" },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferStarted",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "previousOwner",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newOwner",
+        "type": "address"
+      }
+    ],
+    "name": "OwnershipTransferred",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "quoteToken",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "baseToken",
+        "type": "address"
+      },
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "priceOracle",
+        "type": "address"
+      },
+      {
+        "indexed": false,
+        "internalType": "uint32",
+        "name": "defaultSwapCallData",
+        "type": "uint32"
+      },
+      {
+        "indexed": false,
+        "internalType": "address",
+        "name": "pool",
+        "type": "address"
+      }
+    ],
+    "name": "PoolCreated",
+    "type": "event"
+  },
+  {
+    "anonymous": false,
+    "inputs": [
+      {
+        "indexed": true,
+        "internalType": "address",
+        "name": "newSwapRouter",
+        "type": "address"
+      }
+    ],
+    "name": "SwapRouterChanged",
+    "type": "event"
+  },
+  {
+    "inputs": [],
+    "name": "WETH9",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "acceptOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "newSwapRouter", "type": "address" }
+    ],
+    "name": "changeSwapRouter",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "quoteToken", "type": "address" },
+      { "internalType": "address", "name": "baseToken", "type": "address" },
+      { "internalType": "address", "name": "priceOracle", "type": "address" },
+      {
+        "internalType": "uint32",
+        "name": "defaultSwapCallData",
+        "type": "uint32"
+      },
+      {
+        "components": [
+          { "internalType": "uint8", "name": "maxLeverage", "type": "uint8" },
+          {
+            "internalType": "uint24",
+            "name": "interestRate",
+            "type": "uint24"
+          },
+          { "internalType": "uint24", "name": "fee", "type": "uint24" },
+          { "internalType": "uint24", "name": "swapFee", "type": "uint24" },
+          { "internalType": "uint24", "name": "mcSlippage", "type": "uint24" },
+          {
+            "internalType": "uint184",
+            "name": "positionMinAmount",
+            "type": "uint184"
+          },
+          { "internalType": "uint184", "name": "quoteLimit", "type": "uint184" }
+        ],
+        "internalType": "struct MarginlyParams",
+        "name": "params",
+        "type": "tuple"
+      }
+    ],
+    "name": "createPool",
+    "outputs": [
+      { "internalType": "address", "name": "pool", "type": "address" }
+    ],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "feeHolder",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "marginlyPoolImplementation",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "owner",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "pendingOwner",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "renounceOwnership",
+    "outputs": [],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "swapRouter",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [],
+    "name": "techPositionOwner",
+    "outputs": [{ "internalType": "address", "name": "", "type": "address" }],
+    "stateMutability": "view",
+    "type": "function"
+  },
+  {
+    "inputs": [
+      { "internalType": "address", "name": "newOwner", "type": "address" }
+    ],
+    "name": "transferOwnership",
+    "outputs": [],
+    "stateMutability": "nonpayable",
+    "type": "function"
+  }
+]
